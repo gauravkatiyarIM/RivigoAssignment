@@ -110,7 +110,7 @@ export class TeamManagementComponent{
       this.newTeamInput = true;
     }
     else{
-      this.newTeamInput = false
+      this.newTeamInput = false;
     }
     console.log(teamInput);
   }
@@ -120,7 +120,7 @@ export class TeamManagementComponent{
       this.newEmpInput = true;
     }
     else{
-      this.newEmpInput = false
+      this.newEmpInput = false;
     }
     console.log(empInput);
   }
@@ -140,11 +140,13 @@ export class TeamManagementComponent{
     this.newTeam = {};  
     this.isEmpSelected = false;
     this.hideFooter = false;
+    this.newTeamInput = false;
   }
   cancelNewTeam() {
     this.newTeam = {};
     this.teamForm = false;
     this.hideFooter = false;
+    this.newTeamInput = false;
   }
   showAddEmpForm() {
 
@@ -172,6 +174,7 @@ export class TeamManagementComponent{
     this.newEmp = "";
     this.disableTeamInput = !this.disableTeamInput;
     this.hideFooter = false;
+    this.newEmpInput = false;
     console.log(">>>>", JSON.stringify(this.teamData));
 
   }
@@ -180,6 +183,7 @@ export class TeamManagementComponent{
     this.empForm = false;
     this.disableTeamInput = !this.disableTeamInput;
     this.hideFooter = false;
+    this.newEmpInput = false;
   }
 
   onSubmit() {
