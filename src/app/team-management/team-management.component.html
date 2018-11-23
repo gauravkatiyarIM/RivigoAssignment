@@ -1,0 +1,68 @@
+<div>
+  <div class="box-header with-border">
+    <div class="form-group voffset row">
+      <label for="" class="vertical-label col-md-3 text-left"> Select Team</label>
+      <div class="col-md-3" class="float">
+        <div class="col-md-3">
+          <input id="teams" type="text" class="validate filter-input" class="inpStyle"  [(ngModel)]=teamQuery
+           placeholder="Type initial letter of teams" (keyup)=teamFilter() [disabled]=disableTeamInput
+            (ngModelChange)="teamSearchCheck()" >
+
+          <div *ngIf="filteredTeamList.length > 0">
+            <ul *ngFor="let item of filteredTeamList" type="None">
+              <li> <p (click)="selectTeam(item)" >{{item.Team}}</p> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="showAddTeamForm()" >Add Team </button>
+    </div>
+  </div>
+  <div class="box-header with-border">
+    <div class="form-group voffset row">
+
+
+      <label for="" class="vertical-label col-md-3 text-left"> Select Employee</label>
+      <div class="col-md-3" class="float">
+        <div class="col-md-3">
+          <input id="emps" type="text" class="validate filter-input" class="inpStyle" [(ngModel)]=empQuery
+           placeholder="Type initial letter of employees" (keyup)=empFilter() [disabled]="!noTeamSelected()">
+
+          <div class="col-md-3" class="ul" *ngIf="filteredEmpList.length >= 0">
+            <ul *ngFor="let item of filteredEmpList" type="None">
+              <li>
+                <p (click)="selectEmp(item)">{{item}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="!noTeamSelected()" (click)="showAddEmpForm()" >Add Employee
+      </button>
+    </div>
+  </div>
+  <form *ngIf="teamForm">
+      <h2>Add New Team</h2>
+      <p>Team: <input type="text" name="Team" [(ngModel)]="newTeam.Team" (ngModelChange)="newTeamInputCheck($event)"/></p>
+      <p>
+        <button type="button" class="btn btn-primary" (click)="saveNewTeam(newTeam)"
+         [disabled]=!newTeamInput style="margin: 8px"> Submit</button>
+        <button type="button" class="btn btn-warning" (click)="cancelNewTeam()" 
+        style="margin: 8px">Cancel</button>
+      </p>
+    </form>
+    <form *ngIf="empForm">
+      <h2>Add New Employee</h2>
+      <p>Employee: <input type="text" name="Emp" [(ngModel)]="newEmp"  (ngModelChange)="newEmpInputCheck($event)"/></p>
+      <p>
+        <button type="button" class="btn btn-primary" (click)="saveNewEmp(newEmp)"
+        [disabled]=!newEmpInput style="margin: 8px">Submit</button>
+        <button type="button" class="btn btn-warning" (click)="cancelNewEmp()" 
+        style="margin: 8px">Cancel</button>
+      </p>
+    </form>
+</div>
+<div class="modal-footer" [hidden]=hideFooter>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClear()">Close</button>
+  <button type="button" class="btn btn-primary" [disabled]="!noneSelected()" (click)="onSubmit()">Save changes</button>
+</div>

@@ -3,80 +3,18 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
     Launch Modal
   </button>
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Dashboard</h5>
+          <h2 class="modal-title" id="exampleModalLongTitle">Team Management</h2>
           <hr>
-
-          <div class="box-header with-border">
-            <div class="form-group voffset row">
-              <label for="" class="vertical-label col-md-3 text-left"> Select Team</label>
-              <div class="col-md-3" class="float">
-                <div class="col-md-3">
-                  <input id="teams" type="text" value=" " class="validate filter-input" [(ngModel)]=query (keyup)=filter()>
-
-                  <div *ngIf="filteredList.length > 0">
-                    <ul *ngFor="let item of filteredList" type="None">
-                      <li>
-
-                        <p (click)="select(item)">{{item.Team}}</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-success" (click)="showAddTeamForm()">Add Team </button>
-            </div>
-          </div>
-          <div class="box-header with-border">
-            <div class="form-group voffset row">
-
-              <label for="" class="vertical-label col-md-3 text-left"> Select Employee</label>
-              <div class="col-md-3" class="float">
-                <div class="col-md-3">
-                  <input id="emps" type="text" class="validate filter-input" [(ngModel)]=query2 (keyup)=filter2()>
-
-                  <div class="col-md-3" class="ul" *ngIf="filteredList2.length >= 0">
-                    <ul *ngFor="let item2 of filteredList2" type="None">
-                      <li>
-                        <p (click)="select2(item2)" >{{item2}}</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-success" [disabled]="!noTeamSelected()" (click)="showAddEmpForm()">Add Employee
-              </button>
-            </div>
-          </div>
-
-          <form *ngIf="teamForm">
-            <h2>Add New Team</h2>
-            <p>Team: <input type="text" name="Team" [(ngModel)]="newTeam.Team" /></p>
-            <p>
-              <button type="button" class="btn btn-primary" (click)="saveTeam(newTeam)">Submit</button>
-              <button type="button" class="btn btn-warning" (click)="cancelNewTeam()">Cancel</button>
-            </p>
-          </form>
-          <form *ngIf="empForm">
-            <h2>Add New Employee</h2>
-            <p>Employee: <input type="text" name="Emp" [(ngModel)]="newEmp" /></p>
-            <p>
-              <button type="button" class="btn btn-primary" (click)="saveEmp(newEmp)">Submit</button>
-              <button type="button" class="btn btn-warning" (click)="cancelNewEmp()">Cancel</button>
-            </p>
-          </form>
+          <app-team-management> </app-team-management>
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClear()">Close</button>
-          <button type="button" class="btn btn-primary" [disabled]="!noneSelected()" (click)="onSubmit()">Save changes</button>
-        </div>
+        
       </div>
     </div>
   </div>
