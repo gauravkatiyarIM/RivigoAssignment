@@ -91,6 +91,10 @@ export class TeamManagementComponent{
     this.empQuery = ""
   }
 
+  empSearchCheck(){
+    this.isEmpSelected = false;
+  }
+
   noneSelected() {
     return (this.isTeamSelected && this.isEmpSelected);
   }
@@ -155,6 +159,7 @@ export class TeamManagementComponent{
     this.empQuery = "";
     this.disableTeamInput = true;
     this.hideFooter = true;
+    this.isEmpSelected = false;
   }
   saveNewEmp(newEmp) {
     if (this.isNewEmp) {

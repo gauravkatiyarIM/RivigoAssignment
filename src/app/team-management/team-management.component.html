@@ -26,7 +26,8 @@
       <div class="col-md-3" class="float">
         <div class="col-md-3">
           <input id="emps" type="text" class="validate filter-input" class="inpStyle" [(ngModel)]=empQuery
-           placeholder="Type initial letter of employees" (keyup)=empFilter() [disabled]="!noTeamSelected()">
+           placeholder="Type initial letter of employees" (keyup)=empFilter() [disabled]="!noTeamSelected()"
+           (ngModelChange)="empSearchCheck()">
 
           <div class="col-md-3" class="ul" *ngIf="filteredEmpList.length >= 0">
             <ul *ngFor="let item of filteredEmpList" type="None">
